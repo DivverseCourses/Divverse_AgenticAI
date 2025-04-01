@@ -1,0 +1,35 @@
+data_retrieval:
+  description: >
+    Use the Yahoo finance tool to obtain daily price history of {ticker} for the past year, and save it in csv format.
+  expected_output: >
+    A table with the stock name, and price history, saved in {file_path} as a csv file.
+  agent: data_retriever
+
+image_plotting_task:
+  description: >
+    Execute a python script to plot a line graph of the Open and Close columns in {file_path}. 
+    The columns in {file_path} are Price, Close, High, Low, Open, Volume. The index contains the dates. 
+    Use pandas and matplotlib to achieve this, and save the plot in {image_file_path}.
+    Set timeout to be 120.
+  expected_output: >
+    A plotted image saved in {image_file_path}
+  agent: data_analyst
+
+trend_communication_task:
+  description: >
+    Without using code, tell us the trend of the Close column in {file_path}.
+    The columns in {file_path} are Price, Close, High, Low, Open, Volume. The index contains the dates. 
+    Set timeout to be 120.
+  expected_output: >
+    A printed text communicating the overall trend of the price action of the stock
+  agent: data_analyst
+
+model_training_task:
+  description: >
+    Execute a python script using scikit learn on Python to train a linear regression model on the 
+    'Close' column of {file_path}.
+    After training, save the model in .pkl format in {model_path}.
+    Set timeout to be 120.
+  expected_output: >
+    A trained scikit learn model saved in .pkl format, found in {model_path}.
+  agent: ml_engineer

@@ -1,0 +1,30 @@
+retrieve_news_task:
+  description: >
+    Conduct a thorough research about {topic}
+    Make sure you find any interesting and relevant information given
+    the current year is 2025.
+  expected_output: >
+    The list of 10 websites with the most relevant information about {topic}
+  agent: retrieve_news
+
+website_scrape_task:
+  description: >
+    Scrape the website for the latest news and information
+  expected_output: >
+    Fully scraped websites with all the important information from the website.
+  agent: website_scraper
+
+fashion_news_write_task:
+  description: >
+    Summarize the information from the websites into a fully fledge news article in markdown format.
+  expected_output: >
+    A fully fledge news article with the main topics, each with a full section of information.
+    Formatted as markdown without '```'
+  agent: fashion_news_writer
+
+file_write_task:
+  description: >
+    Write the news article to a file
+  expected_output: >
+    A fully fledge news article with all information from previous task into a file named news/{date}_news_article.md
+  agent: file_writer
